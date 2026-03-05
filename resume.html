@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Resume</title>
+
+<style>
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin:0;
+    background:#f4f6f8;
+    color:#333;
+}
+
+header{
+    background:#2c3e50;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+header h1{
+    margin:0;
+    font-size:36px;
+}
+
+header p{
+    margin-top:8px;
+    opacity:0.9;
+}
+
+.container{
+    width:90%;
+    max-width:900px;
+    margin:30px auto;
+}
+
+.section{
+    background:white;
+    padding:25px;
+    margin-bottom:20px;
+    border-radius:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+
+.section h2{
+    margin-top:0;
+    border-left:4px solid #3498db;
+    padding-left:10px;
+}
+
+ul{
+    padding-left:20px;
+}
+
+.skill{
+    display:inline-block;
+    background:#3498db;
+    color:white;
+    padding:6px 12px;
+    border-radius:20px;
+    margin:4px;
+    font-size:14px;
+}
+
+button{
+    background:#3498db;
+    border:none;
+    color:white;
+    padding:10px 16px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#2980b9;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    font-size:14px;
+    color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1 id="name">Your Name</h1>
+<p>Psychology Student | Asia University | Indonesia</p>
+</header>
+
+<div class="container">
+
+<div class="section">
+<h2>About Me</h2>
+<p>
+I am a psychology student at Asia University in Taiwan. 
+I am interested in human behavior, mental health, and research. 
+I enjoy learning new skills and working with people from different cultures.
+</p>
+</div>
+
+<div class="section">
+<h2>Education</h2>
+<ul>
+<li><strong>Asia University (Taiwan)</strong></li>
+<li>Department: Psychology</li>
+<li>Student ID: AU114014134</li>
+<li>Status: Undergraduate Student</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>Skills</h2>
+
+<div class="skill">Communication</div>
+<div class="skill">Teamwork</div>
+<div class="skill">Research</div>
+<div class="skill">Critical Thinking</div>
+<div class="skill">Problem Solving</div>
+
+</div>
+
+<div class="section">
+<h2>Languages</h2>
+<ul>
+<li>Indonesian – Native</li>
+<li>English – Intermediate</li>
+<li>Chinese – Basic</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>Contact</h2>
+<ul>
+<li>Email: your@email.com</li>
+<li>Location: Taiwan / Indonesia</li>
+</ul>
+
+<button onclick="showMessage()">Say Hello</button>
+</div>
+
+</div>
+
+<footer>
+© 2026 Personal Resume
+</footer>
+
+<script>
+function showMessage(){
+    alert("Thank you for visiting my resume!");
+}
+</script>
+
+</body>
+</html>
