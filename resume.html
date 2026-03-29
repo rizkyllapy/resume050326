@@ -1,158 +1,1357 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rizkylla Prasista Yusuf - Resume</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Portfolio with Resume</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 <style>
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    margin:0;
-    background:#f4f6f9;
-    color:#333;
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Turret+Road:wght@200;300;400;500;700;800&display=swap');
+
+:root {
+    --header-height: 3rem;
+
+    --title-color: #0B0A0A;
+    --text-color: #403A3A;
+    --text-color-light: #707070;
+    --container-color: #FAFAFA;
+    --container-color-alt: #F0EFEF;
+    --body-color: #FCFCFC;
+
+    --body-font: 'Poppins', sans-serif;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+
+    --font-medium: 600;
+    --font-semi-bold: 500;
+
+    --m1: .5rem;
+    --m2: 1rem;
+    --m3: 1.5rem;
+
+    --z-tooltip: 10;
+    --z-fixed: 100;
 }
 
-.container{
-    max-width:900px;
-    margin:auto;
-    background:white;
-    padding:40px;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
-}
-
-header{
-    text-align:center;
-    border-bottom:2px solid #eee;
-    padding-bottom:20px;
-}
-
-header h1{
-    margin:0;
-    color:#2c3e50;
-}
-
-header p{
-    margin:5px 0;
-    color:#666;
-}
-
-.section{
-    margin-top:30px;
-}
-
-.section h2{
-    border-left:5px solid #3498db;
-    padding-left:10px;
-    color:#2c3e50;
-}
-
-ul{
-    padding-left:20px;
-}
-
-.skill{
-    display:inline-block;
-    background:#3498db;
-    color:white;
-    padding:5px 10px;
-    margin:5px;
-    border-radius:4px;
-    font-size:14px;
-}
-
-.contact p{
-    margin:6px 0;
-}
-
-button{
-    margin-top:20px;
-    padding:10px 20px;
-    border:none;
-    background:#3498db;
-    color:white;
-    font-size:16px;
-    border-radius:5px;
-    cursor:pointer;
-}
-
-button:hover{
-    background:#2980b9;
-}
-
-@media print{
-    button{
-        display:none;
+*, ::before, ::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0 0 var(--header-height) 0; padding: 0; font-family: var(--body-font); font-size: var(--normal-font-size); background-color: var(--body-color); color: var(--text-color); }
+    body.dark-theme {
+        --title-color: #F2F2F2;
+        --text-color: #BFBFBF;
+        --container-color: #212121;
+        --container-color-alt: #181616;
+        --body-color: #2B2B2B;
     }
+
+    body.scale-cv {
+        --h1-font-size: .938rem;
+        --h2-font-size: .938rem;
+        --h3-font-size: .875rem;
+        --normal-font-size: .813rem;
+        --small-font-size: .75rem;
+        --smaller-font-size: .688rem;
+    }
+
+h1, h2, h3, ul, p { margin: 0; }
+    h1, h2, h3 { margin: 0; }
+    ul { padding: 0; list-style: none; }
+a { text-decoration: none; }
+img { max-width: 100%; height: auto; }
+.section { padding: 1.5rem 0; }
+.section-title { font-size: var(--h2-font-size); color: var(--title-color); font-weight: var(--font-semi-bold); text-transform: uppercase; letter-spacing: 0.35rem; text-align: center; margin-bottom: var(--m3); }
+.bd-container { max-width: 968px; width: calc(100% - 3rem); margin-left: var(--m3); margin-right: var(--m3); }
+.bd-grid { display: grid; gap: 1.5rem; }
+
+/*Header*/
+
+.l-header { width: 100%; position: fixed; bottom: 0; left: 0; z-index: var(--z-fixed); background-color: var(--body-color); box-shadow: 0 -1px 4px rgba(0, 0, 0, .1); transition: .4s; }
+.nav { height: var(--header-height); display: flex; justify-content: space-between; align-items: center; }
+
+@media screen and (max-width: 968px) {
+    .nav-menu { 
+        position: fixed; 
+        bottom: -100%; 
+        left: 0; 
+        width: 100%; 
+        padding: 2rem 1.5rem; 
+        background-color: var(--body-color); 
+        box-shadow: 0 1px 4px rgba(0, 0, 0, .1); 
+        border-radius: 1rem 1rem 0 0; 
+        z-index: var(--z-fixed); 
+        transition: .4s; 
+    }
+   
 }
+
+.nav-toggle, .nav-logo { color: var(--title-color); font-weight: var(--font-medium); }
+    .nav-toggle { font-size: 1.2rem; cursor: pointer; }
+.nav-item { text-align: center; }
+.nav-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.nav-link { display: flex; flex-direction: column; font-size: var(--smaller-font-size); color: var(--text-color-light); font-weight: var(--font-medium); }
+    .nav-link:hover { color: var(--title-color); }
+.nav-icon { font-size: 1.2rem; margin-bottom: var(--m1); }
+.show-menu { bottom: var(--header-height); }
+.active-link { color: var(--title-color); }
+
+/*Home*/
+
+.home { position: relative; }
+.home-container { gap: 3rem; }
+.home-data { gap: 0.5rem; text-align: center; }
+.home-img { width: 120px; height: 120px; border-radius: 50%; justify-self: center; margin-bottom: var(--m1); }
+.home-title { font-size: var(--h1-font-size); }
+.home-profession { font-size: var(--normal-font-size); margin-bottom: var(--m1); }
+.home-address { gap: 1rem; }
+.home-information { display: flex; align-items: center; font-size: var(--small-font-size); }
+.home-icon { font-size: 1.2rem; margin-right: .25rem; }
+.home-button-movil { display: inline-block; border: 2px solid var(--text-color); color: var(--title-color); padding: 1rem 2rem; border-radius: .25rem; transition: .4s; font-weight: var(--font-medium); margin-top: var(--m3); }
+    .home-button-movil:hover { background-color: var(--text-color); color: var(--container-color); }
+
+/*Scale-cv Classes*/
+
+
+.scale-cv .change-theme, .scale-cv .generate-pdf { display: none !important; } 
+.scale-cv .bd-container { max-width: 595px; }
+.scale-cv .section { padding: 1.5rem 0 .80rem; }
+.scale-cv .section-title { margin-bottom: .75rem; }
+.scale-cv .resume-left, .scale-cv .resume-right { padding: 0 1rem; }
+.scale-cv .home-img { width: 90px; height: 90px; }
+.scale-cv .home-container { gap: 1.5rem; }
+.scale-cv .home-data { gap: 0.25rem; }
+.scale-cv .home-address, .scale-cv .social-container { gap: 0.75rem; }
+.scale-cv .home-icon, .scale-cv .social-icon, .scale-cv .interests-icon { font-size: 1rem; }
+.scale-cv .education-container, .scale-cv .experience-container, .scale-cv .certificate-container { gap: 1rem; }
+.scale-cv .education-time, .scale-cv .experience-time { padding-right: 0.5rem; }
+.scale-cv .education-rounder, .scale-cv .experience-rounder { width: 11px; height: 11px; margin-top: 0.22rem; }
+.scale-cv .education-line, .scale-cv .experience-line { width: 1px; height: 110%; transform: translate(5px, 0); }
+.scale-cv .education-data, .scale-cv .experience-data { gap: 0.25rem; }
+.scale-cv .skills-name { margin-bottom: var(--m1); }
+.scale-cv .interests-container { column-gap: 2.5rem; }
+
+/*Social*/
+
+.social-container { grid-template-columns: max-content; gap: 1rem; }
+.social-link { display: inline-flex; align-items: center; font-size: var(--small-font-size); color: var(--text-color); }
+    .social-link:hover { color: var(--title-color); }
+.social-icon { font-size: 1.2rem; margin-right: 0.25rem; }
+
+/*Profile*/
+
+.profile-description { text-align: center; }
+
+/*Education and Experience*/
+
+.education-content, .experience-content { display: flex; }
+.education-time, .experience-time { padding-right: 1rem; }
+.education-rounder, .experience-rounder { position: relative; display: block; width: 16px; height: 16px; background-color: var(--text-color-light); border-radius: 50%; margin-top: 0.25rem; }
+.education-line, .experience-line { display: block; width: 2px; height: 110%; background-color: var(--text-color-light); transform: translate(7px, 0);}
+.education-data, .experience-data { gap: 0.5rem; }
+.education-title, .experience-title { font-size: var(--h3-font-size); }
+.education-studies, .experience-company { font-size: var(--small-font-size); color: var(--title-color); }
+.education-year { font-size: var(--smaller-font-size); }
+
+/*Skills and Languages*/
+
+.skills-content, .languages-content { grid-template-columns: repeat(2, 1fr); }
+.languages-content { gap: 0; }
+.skills-name, .languages-name { display: flex; align-items: center; margin-bottom: var(--m3); }
+.skills-circle, .languages-circle { display: inline-block; width: 5px; height: 5px; background-color: var(--text-color); border-radius: 50%; margin-right: .75rem; }
+
+/*Certification*/
+
+.certificate-title { font-size: var(--h3-font-size); margin-bottom: var(--m1); }
+
+/*References*/
+
+.references-content { gap: 0.25rem; }
+.references-subtitle { color: var(--text-color-light); }
+.references-subtitle, .references-contact { font-size: var(--smaller-font-size); }
+.references-title { font-size: var(--h3-font-size); }
+
+/*Interests*/
+
+.interests-container { grid-template-columns: repeat(3, 1fr); margin-top: var(--m2); }
+.interests-content { display: flex; flex-direction: column; align-items: center; }
+.interests-icon { font-size: 1.5rem; color: var(--text-color-light); }
+
+/*Scroll Top*/
+
+.scrolltop {
+    position: fixed;
+    right: 1rem;
+    bottom: -20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.3rem;
+    background-color: var(--container-color-alt);
+    border-radius: .4rem;
+    z-index: var(--z-tooltip);
+    transition: .4s;
+    visibility: hidden;
+}
+.scrolltop-icon { font-size: 1.2rem; color: var(--text-color); }
+.show-scroll { visibility: visible; bottom: 5rem; }
+
+.change-theme { position: absolute; right: 0; top: 2.2rem; display: flex; color: var(--text-color); font-size: 1.2rem; cursor: pointer; }
+    .change-theme:hover { color: var(--title-color); }
+
+.generate-pdf { display: none !important; position: absolute; top: 2.2rem; left: 0; font-size: 1.2rem; color: var(--text-color); cursor: pointer; }
+    .generate-pdf:hover { color: var(--title-color); }
+
+/*Media Queries*/
+
+@media screen and (max-width: 330px) {
+    .nav-list { grid-template-columns: repeat(2, 1fr); gap: 1rem .5rem; }
+}
+
+@media screen and (min-width: 968px) {
+    body { margin: 3rem 0; }
+    .bd-container { margin-left: auto; margin-right: auto; }
+    .l-header, .scrolltop { display: none; }
+
+    .resume { display: grid; grid-template-columns: .5fr 1fr; background-color: var(--container-color); box-shadow: 0 0 8px rgba(13, 12, 12, .15); }
+    .resume-left { background-color: var(--container-color-alt); }
+        .resume-left, .resume-right { padding: 0 1.5rem; }
+    .section-title, .profile-description { text-align: initial; }
+    .generate-pdf { display: inline-block !important; }
+
+    .home-container { gap: 1.5rem; }
+    .home-button-movil { display: none; }
+
+    .references-container { grid-template-columns: repeat(2, 1fr); }
+    .languages-content { grid-template-columns: repeat(3, max-content); column-gap: 3.5rem; }
+    .interests-container { grid-template-columns: repeat(4, max-content); column-gap: 3.5rem; }
+}
+
+
+
+
+
 </style>
 </head>
-
 <body>
+    <header class="l-header" id="header">
+        <nav class="nav bd-container">
+            <a href="#" class="nav-logo">Smith</a>
 
-<div class="container">
 
-<header>
-<h1>Rizkylla Prasista Yusuf</h1>
-<p>Psychology Student</p>
-<p>Asia University, Taiwan</p>
-<p>Student ID: AU114014134</p>
-</header>
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link active-link"><i class="bx bx-home"></i>Home</a>                                                                                             
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="#profile" class="nav-link"><i class="bx bx-user"></i>Profile</a>
+                    </li>
 
-<div class="section">
-<h2>Profile</h2>
-<p>
-Motivated psychology student from Indonesia currently studying at Asia University.
-Interested in human behavior, mental health, and psychological research.
-Dedicated to learning, cross-cultural communication, and personal development.
-</p>
-</div>
+                    <li class="nav-item">
+                        <a href="#education" class="nav-link"><i class="bx bx-book"></i>Education</a>
+                    </li>
 
-<div class="section">
-<h2>Education</h2>
-<ul>
-<li>
-<strong>Asia University</strong> – Taichung, Taiwan  
-<br>Bachelor Degree in Psychology  
-<br>Student ID: AU114014134
-</li>
-</ul>
-</div>
+                    <li class="nav-item">
+                        <a href="#skills" class="nav-link"><i class="bx bx-receipt"></i>Skills</a>
+                    </li>
 
-<div class="section">
-<h2>Skills</h2>
-<div class="skill">Psychology Research</div>
-<div class="skill">Communication</div>
-<div class="skill">Critical Thinking</div>
-<div class="skill">Teamwork</div>
-<div class="skill">Cross Cultural Understanding</div>
-</div>
+                    <li class="nav-item">
+                        <a href="#experience" class="nav-link"><i class="bx bx-briefcase-alt"></i>Experience</a>
+                    </li>
 
-<div class="section">
-<h2>Languages</h2>
-<ul>
-<li>Indonesian – Native</li>
-<li>English – Intermediate</li>
-</ul>
-</div>
+                    <li class="nav-item">
+                        <a href="#certificates" class="nav-link"><i class="bx bx-award"></i>Certificates</a>
+                    </li>
 
-<div class="section contact">
-<h2>Contact</h2>
-<p>Email: your_email@example.com</p>
-<p>Phone: your_phone_number</p>
-<p>Location: Taichung, Taiwan</p>
-<p>Nationality: Indonesian</p>
-</div>
+                    <li class="nav-item">
+                        <a href="#references" class="nav-link"><i class="bx bx-link-external"></i>References</a>
+                    </li>
+                </ul>
+            </div>
 
-<button onclick="downloadPDF()">Download / Print Resume</button>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="bx bx-grid-alt"></i>
+            </div>
+        </nav>
+    </header>
 
-</div>
+    <main class="l-main bd-container">
+        <div class="resume" id="area-cv">
+            <div class="resume-left">
+                <section class="home" id="home">
+                    <div class="home-container section bd-grid">
+                        <div class="home-data bd-grid">
+                            <!-- Download the image and put it in the source to appear the image in PDF download -->
+                            <img src="https://i.postimg.cc/Z5VcmyV0/perfil.jpg" alt="" class="home-img">
 
-<script>
-function downloadPDF(){
-    window.print();
+                            <h1 class="home-title">SMITH <b>MATTHEW</b></h1>
+                            <h3 class="home-profession">Web Developer</h3>
+
+                            <!-- Mobile Button -->
+                            <div>   
+                                <a href="ResumeCv.pdf" class="home-button-movil" download="">Download</a>
+                            </div>
+                        </div>
+
+                        <div class="home-address bd-grid">
+                            <span class="home-information">
+                                <i class="bx bx-map home-icon"></i>Av Paulista, 2001, São Paulo - Brazil
+                            </span>
+
+                            <span class="home-information">
+                                <i class="bx bx-envelope home-icon"></i>user@gmail.com
+                            </span>
+
+                            <span class="home-information">
+                                <i class="bx bx-phone home-icon"></i> +55 (11) 99999-9999
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Theme Changing Button -->
+
+                    <i class="bx bx-moon change-theme" title="Theme" id="theme-button"></i>
+
+                    <!-- PDF Download Button. Only available in desktop -->
+
+                    <i class="bx bx-download generate-pdf" id="resume-button" title="Generate PDF"></i>
+
+                </section>
+
+                <section class="social section">
+                    <h2 class="section-title">SOCIAL</h2>
+
+                    <div class="social-container bd-grid">
+                        <a href="https://www.linkedin.com/" target="_blank" class="social-link">
+                            <i class="bx bxl-linkedin-square social-icon"></i>@smithmat
+                        </a>
+
+                        <a href="https://www.facebook.com/" target="_blank" class="social-link">
+                            <i class="bx bxl-facebook social-icon"></i>@smithmat
+                        </a>
+
+                        <a href="https://www.instagram.com/" target="_blank" class="social-link">
+                            <i class="bx bxl-instagram social-icon"></i>@smithmat
+                        </a>
+
+                    </div>
+                </section>
+
+                <section class="profile section" id="profile">
+                    <h2 class="section-title">Profile</h2>
+
+                    <p class="profile-description">Passionate about designing and developing websites that do good. I believe in a responsible approach to web design, ensuring every project is not only aesthetically pleasing but also accessible, fast, and built to last</p>
+                </section>
+
+                <section class="education section" id="education">
+                    <h2 class="section-title">Education</h2>
+
+                    <div class="education-container bd-grid">
+                        <div class="education-content">
+                            <div class="education-time">
+                                <span class="education-rounder"></span>
+                                <span class="education-line"></span>
+                            </div>
+
+                            <div class="education-data bd-grid">
+                                <h3 class="education-title">MASTER OF DESIGN</h3>
+                                <span class="education-studies">University of Studies</span>
+                                <span class="education-year">2010 - 2015</span>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="education-content">
+                            <div class="education-time">
+                                <span class="education-rounder"></span>
+                                <span class="education-line"></span>
+                            </div>
+
+                            <div class="education-data bd-grid">
+                                <h3 class="education-title">WEB DEVELOPER</h3>
+                                <span class="education-studies">Studies Institute</span>
+                                <span class="education-year">2016 - 2019</span>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="education-content">
+                            <div class="education-time">
+                                <span class="education-rounder"></span>
+                                <!-- <span class="education-line"></span> -->
+                            </div>
+
+                            <div class="education-data bd-grid">
+                                <h3 class="education-title">MASTER IN UX/UI</h3>
+                                <span class="education-studies">Studies Institute</span>
+                                <span class="education-year">2019 - 2021</span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </section>
+
+                <section class="skills" id="skills">
+                    <h2 class="section-title">Skills</h2>
+
+                    <div class="skills-content bd-grid">
+                        <ul class="skills-data">
+                            <li class="skills-name"><span class="skills-circle"></span> HTML</li>
+                            <li class="skills-name"><span class="skills-circle"></span> CSS</li>
+                            <li class="skills-name"><span class="skills-circle"></span> Sass</li>
+                            <li class="skills-name"><span class="skills-circle"></span> Javascript</li>
+                        </ul>
+
+                        <ul class="skills-data">
+                            <li class="skills-name"><span class="skills-circle"></span> Angular</li>
+                            <li class="skills-name"><span class="skills-circle"></span> Firebase</li>
+                            <li class="skills-name"><span class="skills-circle"></span> React</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <div class="resume-right">
+                <section class="experience section" id="experience">
+                    <h2 class="section-title">Experience</h2>
+
+                    <div class="experience-container bd-grid">
+                        <div class="experience-content">
+                            <div class="experience-time">
+                                <span class="experience-rounder"></span>
+                                <span class="experience-line"></span>
+                            </div>
+
+                            <div class="experience-data bd-grid">
+                                <h3 class="experience-title">MASTER OF DESIGN</h3>
+                                <span class="experience-company">From 2013 to 2015 | Tech Soft</span>
+                                <p class="experience-description">I conducted surveys and user interviews, I developed wireframes and prototypes and I selected a color palette and typography. The final result was a fully responsive and user-friendly</p>
+                            </div>
+                        </div>
+
+                        <div class="experience-content">
+                            <div class="experience-time">
+                                <span class="experience-rounder"></span>
+                                <span class="experience-line"></span>
+                            </div>
+
+                            <div class="experience-data bd-grid">
+                                <h3 class="experience-title">UI/UX DESIGN AREA</h3>
+                                <span class="experience-company">From 2017 to 2019 | Adobe Inc</span>
+                                <p class="experience-description">I conducted usability testing sessions, I developed wireframes and prototypes and I selected a color palette and typography. The final result was a significantly improved mobile app that was more intuitive and user-friendly</p>
+                            </div>
+                        </div>
+
+                        <div class="experience-content">
+                            <div class="experience-time">
+                                <span class="experience-rounder"></span>
+                                <!-- <span class="experience-line"></span> -->
+                            </div>
+
+                            <div class="experience-data bd-grid">
+                                <h3 class="experience-title">MOBILE APPLICATION DEVELOPER</h3>
+                                <span class="experience-company">From 2019 to 2021 | Fitness Tech</span>
+                                <p class="experience-description">I collaborated with stakeholders to define app features and functionalities, I implemented core features such as: activity training, nutrition logging and goal setting and I successfully launched the app</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="certificate section" id="certificates">
+                    <h2 class="section-title">Certificates</h2>
+
+                    <div class="certificate-container bd-grid">
+                        <div class="certificate-content">
+                            <h3 class="certificate-title">Compliance Certification (2012)</h3>
+                            <p class="certificate-description">Promotes efficiency and consistency</p>
+                        </div>
+
+                        <div class="certificate-content">
+                            <h3 class="certificate-title">Attendance Certification on Computer Certification (2015)</h3>
+                            <p class="certificate-description">Recognizes the web design principles, tools, and technologies of a developer</p>
+                        </div>
+
+                        <div class="certificate-content">
+                            <h3 class="certificate-title">Achievement Medal for productivity excellence (2015)</h3>
+                            <p class="certificate-description">Rewards web designers with exceptional efficiency, organization, and time management skills</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="references section" id="references">
+                    <h2 class="section-title">References</h2>
+
+                    <div class="references-container bd-grid">
+                        <div class="references-content bd-grid">
+                            <span class="references-subtitle">Sr. Director</span>
+
+                            <h3 class="references-title">Mr. Clay Doe</h3>
+                            <ul class="references-contact">
+                                <li>Phone: +55 (11) 98888-8888</li>
+                                <li>Email: user@email.com</li>
+                            </ul>
+                        </div>
+
+                        <div class="references-content bd-grid">
+                            <span class="references-subtitle">Mag. Developer</span>
+
+                            <h3 class="references-title">Mr. Robbinson Bass</h3>
+                            <ul class="references-contact">
+                                <li>Phone: +55 (11) 97777-7777</li>
+                                <li>Email: user@email.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="languages section">
+                    <h3 class="section-title">Languages</h3>
+
+                    <div class="languages-container">
+                        <ul class="languages-content bd-grid">
+                            <li class="languages-name">
+                                <span class="languages-circle"></span> Spanish
+                            </li>
+
+                            <li class="languages-name">
+                                <span class="languages-circle"></span> English
+                            </li>
+
+                            <li class="languages-name">
+                                <span class="languages-circle"></span> Portuguese
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="interests section">
+                    <h2 class="section-title">Interests</h2>
+
+                    <div class="interests-container bd-grid">
+                        <div class="interests-content">
+                            <i class="bx bx-headphone interests-icon"></i>
+                            <span class="interests-name">Music</span>
+                        </div>
+
+                        <div class="interests-content">
+                            <i class="bx bxs-plane-alt interests-icon"></i>
+                            <span class="interests-name">Travel</span>
+                        </div>
+
+                        <div class="interests-content">
+                            <i class="bx bx-book interests-icon"></i>
+                            <span class="interests-name">Read</span>
+                        </div>
+
+                        <div class="interests-content">
+                            <i class="bx bx-dumbbell interests-icon"></i>
+                            <span class="interests-name">Fitness</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <a href="#" class="scrolltop" id="scroll-top">
+        <i class="bx bx-up-arrow-alt scrolltop-icon"></i>
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="main.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Portfolio with Resume</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+<body>
+    <header class="l-header" id="header">
+        <nav class="nav bd-container">
+            <a href="#" class="nav-logo">Smith</a>
+
+
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link active-link"><i class="bx bx-home"></i>Home</a>                                                                                             
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="#profile" class="nav-link"><i class="bx bx-user"></i>Profile</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#education" class="nav-link"><i class="bx bx-book"></i>Education</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#skills" class="nav-link"><i class="bx bx-receipt"></i>Skills</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#experience" class="nav-link"><i class="bx bx-briefcase-alt"></i>Experience</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#certificates" class="nav-link"><i class="bx bx-award"></i>Certificates</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#references" class="nav-link"><i class="bx bx-link-external"></i>References</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="bx bx-grid-alt"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main bd-container">
+        <div class="resume" id="area-cv">
+            <div class="resume-left">
+                <section class="home" id="home">
+                    <div class="home-container section bd-grid">
+                        <div class="home-data bd-grid">
+                            <!-- Download the image and put it in the source to appear the image in PDF download -->
+                            <img src="https://i.postimg.cc/Z5VcmyV0/perfil.jpg" alt="" class="home-img">
+
+                            <h1 class="home-title">SMITH <b>MATTHEW</b></h1>
+                            <h3 class="home-profession">Web Developer</h3>
+
+                            <!-- Mobile Button -->
+                            <div>   
+                                <a href="ResumeCv.pdf" class="home-button-movil" download="">Download</a>
+                            </div>
+                        </div>
+
+                        <div class="home-address bd-grid">
+                            <span class="home-information">
+                                <i class="bx bx-map home-icon"></i>Av Paulista, 2001, São Paulo - Brazil
+                            </span>
+
+                            <span class="home-information">
+                                <i class="bx bx-envelope home-icon"></i>user@gmail.com
+                            </span>
+
+                            <span class="home-information">
+                                <i class="bx bx-phone home-icon"></i> +55 (11) 99999-9999
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Theme Changing Button -->
+
+                    <i class="bx bx-moon change-theme" title="Theme" id="theme-button"></i>
+
+                    <!-- PDF Download Button. Only available in desktop -->
+
+                    <i class="bx bx-download generate-pdf" id="resume-button" title="Generate PDF"></i>
+
+                </section>
+
+                <section class="social section">
+                    <h2 class="section-title">SOCIAL</h2>
+
+                    <div class="social-container bd-grid">
+                        <a href="https://www.linkedin.com/" target="_blank" class="social-link">
+                            <i class="bx bxl-linkedin-square social-icon"></i>@smithmat
+                        </a>
+
+                        <a href="https://www.facebook.com/" target="_blank" class="social-link">
+                            <i class="bx bxl-facebook social-icon"></i>@smithmat
+                        </a>
+
+                        <a href="https://www.instagram.com/" target="_blank" class="social-link">
+                            <i class="bx bxl-instagram social-icon"></i>@smithmat
+                        </a>
+
+                    </div>
+                </section>
+
+                <section class="profile section" id="profile">
+                    <h2 class="section-title">Profile</h2>
+
+                    <p class="profile-description">Passionate about designing and developing websites that do good. I believe in a responsible approach to web design, ensuring every project is not only aesthetically pleasing but also accessible, fast, and built to last</p>
+                </section>
+
+                <section class="education section" id="education">
+                    <h2 class="section-title">Education</h2>
+
+                    <div class="education-container bd-grid">
+                        <div class="education-content">
+                            <div class="education-time">
+                                <span class="education-rounder"></span>
+                                <span class="education-line"></span>
+                            </div>
+
+                            <div class="education-data bd-grid">
+                                <h3 class="education-title">MASTER OF DESIGN</h3>
+                                <span class="education-studies">University of Studies</span>
+                                <span class="education-year">2010 - 2015</span>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="education-content">
+                            <div class="education-time">
+                                <span class="education-rounder"></span>
+                                <span class="education-line"></span>
+                            </div>
+
+                            <div class="education-data bd-grid">
+                                <h3 class="education-title">WEB DEVELOPER</h3>
+                                <span class="education-studies">Studies Institute</span>
+                                <span class="education-year">2016 - 2019</span>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="education-content">
+                            <div class="education-time">
+                                <span class="education-rounder"></span>
+                                <!-- <span class="education-line"></span> -->
+                            </div>
+
+                            <div class="education-data bd-grid">
+                                <h3 class="education-title">MASTER IN UX/UI</h3>
+                                <span class="education-studies">Studies Institute</span>
+                                <span class="education-year">2019 - 2021</span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </section>
+
+                <section class="skills" id="skills">
+                    <h2 class="section-title">Skills</h2>
+
+                    <div class="skills-content bd-grid">
+                        <ul class="skills-data">
+                            <li class="skills-name"><span class="skills-circle"></span> HTML</li>
+                            <li class="skills-name"><span class="skills-circle"></span> CSS</li>
+                            <li class="skills-name"><span class="skills-circle"></span> Sass</li>
+                            <li class="skills-name"><span class="skills-circle"></span> Javascript</li>
+                        </ul>
+
+                        <ul class="skills-data">
+                            <li class="skills-name"><span class="skills-circle"></span> Angular</li>
+                            <li class="skills-name"><span class="skills-circle"></span> Firebase</li>
+                            <li class="skills-name"><span class="skills-circle"></span> React</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <div class="resume-right">
+                <section class="experience section" id="experience">
+                    <h2 class="section-title">Experience</h2>
+
+                    <div class="experience-container bd-grid">
+                        <div class="experience-content">
+                            <div class="experience-time">
+                                <span class="experience-rounder"></span>
+                                <span class="experience-line"></span>
+                            </div>
+
+                            <div class="experience-data bd-grid">
+                                <h3 class="experience-title">MASTER OF DESIGN</h3>
+                                <span class="experience-company">From 2013 to 2015 | Tech Soft</span>
+                                <p class="experience-description">I conducted surveys and user interviews, I developed wireframes and prototypes and I selected a color palette and typography. The final result was a fully responsive and user-friendly</p>
+                            </div>
+                        </div>
+
+                        <div class="experience-content">
+                            <div class="experience-time">
+                                <span class="experience-rounder"></span>
+                                <span class="experience-line"></span>
+                            </div>
+
+                            <div class="experience-data bd-grid">
+                                <h3 class="experience-title">UI/UX DESIGN AREA</h3>
+                                <span class="experience-company">From 2017 to 2019 | Adobe Inc</span>
+                                <p class="experience-description">I conducted usability testing sessions, I developed wireframes and prototypes and I selected a color palette and typography. The final result was a significantly improved mobile app that was more intuitive and user-friendly</p>
+                            </div>
+                        </div>
+
+                        <div class="experience-content">
+                            <div class="experience-time">
+                                <span class="experience-rounder"></span>
+                                <!-- <span class="experience-line"></span> -->
+                            </div>
+
+                            <div class="experience-data bd-grid">
+                                <h3 class="experience-title">MOBILE APPLICATION DEVELOPER</h3>
+                                <span class="experience-company">From 2019 to 2021 | Fitness Tech</span>
+                                <p class="experience-description">I collaborated with stakeholders to define app features and functionalities, I implemented core features such as: activity training, nutrition logging and goal setting and I successfully launched the app</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="certificate section" id="certificates">
+                    <h2 class="section-title">Certificates</h2>
+
+                    <div class="certificate-container bd-grid">
+                        <div class="certificate-content">
+                            <h3 class="certificate-title">Compliance Certification (2012)</h3>
+                            <p class="certificate-description">Promotes efficiency and consistency</p>
+                        </div>
+
+                        <div class="certificate-content">
+                            <h3 class="certificate-title">Attendance Certification on Computer Certification (2015)</h3>
+                            <p class="certificate-description">Recognizes the web design principles, tools, and technologies of a developer</p>
+                        </div>
+
+                        <div class="certificate-content">
+                            <h3 class="certificate-title">Achievement Medal for productivity excellence (2015)</h3>
+                            <p class="certificate-description">Rewards web designers with exceptional efficiency, organization, and time management skills</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="references section" id="references">
+                    <h2 class="section-title">References</h2>
+
+                    <div class="references-container bd-grid">
+                        <div class="references-content bd-grid">
+                            <span class="references-subtitle">Sr. Director</span>
+
+                            <h3 class="references-title">Mr. Clay Doe</h3>
+                            <ul class="references-contact">
+                                <li>Phone: +55 (11) 98888-8888</li>
+                                <li>Email: user@email.com</li>
+                            </ul>
+                        </div>
+
+                        <div class="references-content bd-grid">
+                            <span class="references-subtitle">Mag. Developer</span>
+
+                            <h3 class="references-title">Mr. Robbinson Bass</h3>
+                            <ul class="references-contact">
+                                <li>Phone: +55 (11) 97777-7777</li>
+                                <li>Email: user@email.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="languages section">
+                    <h3 class="section-title">Languages</h3>
+
+                    <div class="languages-container">
+                        <ul class="languages-content bd-grid">
+                            <li class="languages-name">
+                                <span class="languages-circle"></span> Spanish
+                            </li>
+
+                            <li class="languages-name">
+                                <span class="languages-circle"></span> English
+                            </li>
+
+                            <li class="languages-name">
+                                <span class="languages-circle"></span> Portuguese
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="interests section">
+                    <h2 class="section-title">Interests</h2>
+
+                    <div class="interests-container bd-grid">
+                        <div class="interests-content">
+                            <i class="bx bx-headphone interests-icon"></i>
+                            <span class="interests-name">Music</span>
+                        </div>
+
+                        <div class="interests-content">
+                            <i class="bx bxs-plane-alt interests-icon"></i>
+                            <span class="interests-name">Travel</span>
+                        </div>
+
+                        <div class="interests-content">
+                            <i class="bx bx-book interests-icon"></i>
+                            <span class="interests-name">Read</span>
+                        </div>
+
+                        <div class="interests-content">
+                            <i class="bx bx-dumbbell interests-icon"></i>
+                            <span class="interests-name">Fitness</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <a href="#" class="scrolltop" id="scroll-top">
+        <i class="bx bx-up-arrow-alt scrolltop-icon"></i>
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="main.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Portfolio with Resume</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+<body>
+    <header class="l-header" id="header">
+        <nav class="nav bd-container">
+            <a href="#" class="nav-logo">Smith</a>
+
+
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link active-link"><i class="bx bx-home"></i>Home</a>                                                                                             
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="#profile" class="nav-link"><i class="bx bx-user"></i>Profile</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#education" class="nav-link"><i class="bx bx-book"></i>Education</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#skills" class="nav-link"><i class="bx bx-receipt"></i>Skills</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#experience" class="nav-link"><i class="bx bx-briefcase-alt"></i>Experience</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#certificates" class="nav-link"><i class="bx bx-award"></i>Certificates</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#references" class="nav-link"><i class="bx bx-link-external"></i>References</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="bx bx-grid-alt"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main bd-container">
+        <div class="resume" id="area-cv">
+            <div class="resume-left">
+                <section class="home" id="home">
+                    <div class="home-container section bd-grid">
+                        <div class="home-data bd-grid">
+                            <!-- Download the image and put it in the source to appear the image in PDF download -->
+                            <img src="https://i.postimg.cc/Z5VcmyV0/perfil.jpg" alt="" class="home-img">
+
+                            <h1 class="home-title">SMITH <b>MATTHEW</b></h1>
+                            <h3 class="home-profession">Web Developer</h3>
+
+                            <!-- Mobile Button -->
+                            <div>   
+                                <a href="ResumeCv.pdf" class="home-button-movil" download="">Download</a>
+                            </div>
+                        </div>
+
+                        <div class="home-address bd-grid">
+                            <span class="home-information">
+                                <i class="bx bx-map home-icon"></i>Av Paulista, 2001, São Paulo - Brazil
+                            </span>
+
+                            <span class="home-information">
+                                <i class="bx bx-envelope home-icon"></i>user@gmail.com
+                            </span>
+
+                            <span class="home-information">
+                                <i class="bx bx-phone home-icon"></i> +55 (11) 99999-9999
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Theme Changing Button -->
+
+                    <i class="bx bx-moon change-theme" title="Theme" id="theme-button"></i>
+
+                    <!-- PDF Download Button. Only available in desktop -->
+
+                    <i class="bx bx-download generate-pdf" id="resume-button" title="Generate PDF"></i>
+
+                </section>
+
+                <section class="social section">
+                    <h2 class="section-title">SOCIAL</h2>
+
+                    <div class="social-container bd-grid">
+                        <a href="https://www.linkedin.com/" target="_blank" class="social-link">
+                            <i class="bx bxl-linkedin-square social-icon"></i>@smithmat
+                        </a>
+
+                        <a href="https://www.facebook.com/" target="_blank" class="social-link">
+                            <i class="bx bxl-facebook social-icon"></i>@smithmat
+                        </a>
+
+                        <a href="https://www.instagram.com/" target="_blank" class="social-link">
+                            <i class="bx bxl-instagram social-icon"></i>@smithmat
+                        </a>
+
+                    </div>
+                </section>
+
+                <section class="profile section" id="profile">
+                    <h2 class="section-title">Profile</h2>
+
+                    <p class="profile-description">Passionate about designing and developing websites that do good. I believe in a responsible approach to web design, ensuring every project is not only aesthetically pleasing but also accessible, fast, and built to last</p>
+                </section>
+
+                <section class="education section" id="education">
+                    <h2 class="section-title">Education</h2>
+
+                    <div class="education-container bd-grid">
+                        <div class="education-content">
+                            <div class="education-time">
+                                <span class="education-rounder"></span>
+                                <span class="education-line"></span>
+                            </div>
+
+                            <div class="education-data bd-grid">
+                                <h3 class="education-title">MASTER OF DESIGN</h3>
+                                <span class="education-studies">University of Studies</span>
+                                <span class="education-year">2010 - 2015</span>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="education-content">
+                            <div class="education-time">
+                                <span class="education-rounder"></span>
+                                <span class="education-line"></span>
+                            </div>
+
+                            <div class="education-data bd-grid">
+                                <h3 class="education-title">WEB DEVELOPER</h3>
+                                <span class="education-studies">Studies Institute</span>
+                                <span class="education-year">2016 - 2019</span>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="education-content">
+                            <div class="education-time">
+                                <span class="education-rounder"></span>
+                                <!-- <span class="education-line"></span> -->
+                            </div>
+
+                            <div class="education-data bd-grid">
+                                <h3 class="education-title">MASTER IN UX/UI</h3>
+                                <span class="education-studies">Studies Institute</span>
+                                <span class="education-year">2019 - 2021</span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </section>
+
+                <section class="skills" id="skills">
+                    <h2 class="section-title">Skills</h2>
+
+                    <div class="skills-content bd-grid">
+                        <ul class="skills-data">
+                            <li class="skills-name"><span class="skills-circle"></span> HTML</li>
+                            <li class="skills-name"><span class="skills-circle"></span> CSS</li>
+                            <li class="skills-name"><span class="skills-circle"></span> Sass</li>
+                            <li class="skills-name"><span class="skills-circle"></span> Javascript</li>
+                        </ul>
+
+                        <ul class="skills-data">
+                            <li class="skills-name"><span class="skills-circle"></span> Angular</li>
+                            <li class="skills-name"><span class="skills-circle"></span> Firebase</li>
+                            <li class="skills-name"><span class="skills-circle"></span> React</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <div class="resume-right">
+                <section class="experience section" id="experience">
+                    <h2 class="section-title">Experience</h2>
+
+                    <div class="experience-container bd-grid">
+                        <div class="experience-content">
+                            <div class="experience-time">
+                                <span class="experience-rounder"></span>
+                                <span class="experience-line"></span>
+                            </div>
+
+                            <div class="experience-data bd-grid">
+                                <h3 class="experience-title">MASTER OF DESIGN</h3>
+                                <span class="experience-company">From 2013 to 2015 | Tech Soft</span>
+                                <p class="experience-description">I conducted surveys and user interviews, I developed wireframes and prototypes and I selected a color palette and typography. The final result was a fully responsive and user-friendly</p>
+                            </div>
+                        </div>
+
+                        <div class="experience-content">
+                            <div class="experience-time">
+                                <span class="experience-rounder"></span>
+                                <span class="experience-line"></span>
+                            </div>
+
+                            <div class="experience-data bd-grid">
+                                <h3 class="experience-title">UI/UX DESIGN AREA</h3>
+                                <span class="experience-company">From 2017 to 2019 | Adobe Inc</span>
+                                <p class="experience-description">I conducted usability testing sessions, I developed wireframes and prototypes and I selected a color palette and typography. The final result was a significantly improved mobile app that was more intuitive and user-friendly</p>
+                            </div>
+                        </div>
+
+                        <div class="experience-content">
+                            <div class="experience-time">
+                                <span class="experience-rounder"></span>
+                                <!-- <span class="experience-line"></span> -->
+                            </div>
+
+                            <div class="experience-data bd-grid">
+                                <h3 class="experience-title">MOBILE APPLICATION DEVELOPER</h3>
+                                <span class="experience-company">From 2019 to 2021 | Fitness Tech</span>
+                                <p class="experience-description">I collaborated with stakeholders to define app features and functionalities, I implemented core features such as: activity training, nutrition logging and goal setting and I successfully launched the app</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="certificate section" id="certificates">
+                    <h2 class="section-title">Certificates</h2>
+
+                    <div class="certificate-container bd-grid">
+                        <div class="certificate-content">
+                            <h3 class="certificate-title">Compliance Certification (2012)</h3>
+                            <p class="certificate-description">Promotes efficiency and consistency</p>
+                        </div>
+
+                        <div class="certificate-content">
+                            <h3 class="certificate-title">Attendance Certification on Computer Certification (2015)</h3>
+                            <p class="certificate-description">Recognizes the web design principles, tools, and technologies of a developer</p>
+                        </div>
+
+                        <div class="certificate-content">
+                            <h3 class="certificate-title">Achievement Medal for productivity excellence (2015)</h3>
+                            <p class="certificate-description">Rewards web designers with exceptional efficiency, organization, and time management skills</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="references section" id="references">
+                    <h2 class="section-title">References</h2>
+
+                    <div class="references-container bd-grid">
+                        <div class="references-content bd-grid">
+                            <span class="references-subtitle">Sr. Director</span>
+
+                            <h3 class="references-title">Mr. Clay Doe</h3>
+                            <ul class="references-contact">
+                                <li>Phone: +55 (11) 98888-8888</li>
+                                <li>Email: user@email.com</li>
+                            </ul>
+                        </div>
+
+                        <div class="references-content bd-grid">
+                            <span class="references-subtitle">Mag. Developer</span>
+
+                            <h3 class="references-title">Mr. Robbinson Bass</h3>
+                            <ul class="references-contact">
+                                <li>Phone: +55 (11) 97777-7777</li>
+                                <li>Email: user@email.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="languages section">
+                    <h3 class="section-title">Languages</h3>
+
+                    <div class="languages-container">
+                        <ul class="languages-content bd-grid">
+                            <li class="languages-name">
+                                <span class="languages-circle"></span> Spanish
+                            </li>
+
+                            <li class="languages-name">
+                                <span class="languages-circle"></span> English
+                            </li>
+
+                            <li class="languages-name">
+                                <span class="languages-circle"></span> Portuguese
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="interests section">
+                    <h2 class="section-title">Interests</h2>
+
+                    <div class="interests-container bd-grid">
+                        <div class="interests-content">
+                            <i class="bx bx-headphone interests-icon"></i>
+                            <span class="interests-name">Music</span>
+                        </div>
+
+                        <div class="interests-content">
+                            <i class="bx bxs-plane-alt interests-icon"></i>
+                            <span class="interests-name">Travel</span>
+                        </div>
+
+                        <div class="interests-content">
+                            <i class="bx bx-book interests-icon"></i>
+                            <span class="interests-name">Read</span>
+                        </div>
+
+                        <div class="interests-content">
+                            <i class="bx bx-dumbbell interests-icon"></i>
+                            <span class="interests-name">Fitness</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <a href="#" class="scrolltop" id="scroll-top">
+        <i class="bx bx-up-arrow-alt scrolltop-icon"></i>
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        //Enabling Menu
+
+const showMenu = (toggleId, navId) => {
+    const toggle = document.getElementById(toggleId);
+    const nav = document.getElementById(navId);
+
+    if(toggle && nav) {
+        toggle.addEventListener('click', () => { nav.classList.toggle('show-menu'); })
+    }
+    
 }
-</script>
+showMenu('nav-toggle', 'nav-menu');
 
+//Menu disappears when a link is clicked
+
+const navLink = document.querySelectorAll('.nav-link');
+
+function linkAction() {
+    const navMenu = document.getElementById('nav-menu');
+    navMenu.classList.remove('show-menu');
+}
+navLink.forEach(n => n.addEventListener('click', linkAction));
+
+//Changing Active Link whie scrolling
+
+const sections = document.querySelectorAll('section[id]');
+
+function scrollActive(){
+    const scrollY = window.pageYOffset;
+
+    sections.forEach(current => {
+        const sectionHeight = current.offsetHeight;
+        const sectionTop = current.offsetTop - 50;
+        const sectionId = current.getAttribute('id');
+
+        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.add('active-link');
+        }else{
+            document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.remove('active-link');
+        }
+    })
+}
+window.addEventListener('scroll', scrollActive);
+
+//Showing Scrolltop button
+
+function scrollTop() {
+    const scrollTop = document.getElementById('scroll-top');
+    if(this.scrollY >= 200) scrollTop.classList.add('show-scroll'); else scrollTop.classList.remove('show-scroll');
+}
+window.addEventListener('scroll', scrollTop);
+
+// Changing Theme
+
+const themeButton = document.getElementById('theme-button');
+const darkTheme = 'dark-theme';
+const iconTheme = 'bx-sun';
+
+const selectedTheme = localStorage.getItem('selected-theme');
+const selectedIcon = localStorage.getItem('selected-icon');
+
+const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
+const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'bx-moon' : 'bx-sun';
+
+if(selectedTheme) {
+    document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme);
+    themeButton.classList[selectedIcon === 'bx-moon' ? 'add' : 'remove'](iconTheme);
+}
+
+themeButton.addEventListener('click', () => {
+    document.body.classList.toggle(darkTheme);
+    themeButton.classList.toggle(iconTheme);
+
+    localStorage.setItem('selected-theme', getCurrentTheme());
+    localStorage.setItem('selected-icon', getCurrentIcon());
+})
+
+// Adjusting and Downloading PDF
+
+function scaleCv() { document.body.classList.add('scale-cv'); }
+function removeScale() { document.body.classList.remove('scale-cv'); }
+
+let areaCv = document.getElementById('area-cv');
+let resumeButton = document.getElementById('resume-button');
+
+let opt = {
+    margin: 0,
+    filename: 'myResume.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 4 },
+    jsPDF: { format: 'a4', orientation: 'portrait' }
+}
+
+function generateResume() { html2pdf(areaCv, opt); }
+
+resumeButton.addEventListener('click', () => {
+    //Adds the Cv scales to the body
+    scaleCv();
+    //PDF is generated
+    generateResume();
+    //Removes the Cv scales from the body after 5 seconds
+    setTimeout(removeScale, 5000);
+}) 
+    </script>
 </body>
 </html>
